@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page Not Found | Rajamma Engineering</title>
+<meta name="robots" content="noindex, follow">
+<link rel="icon" type="image/svg+xml" href="assets/svg/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css">
+<style>
+  body { display: flex; align-items: center; justify-content: center; min-height: 100vh; text-align: center; }
+  .error-code { font-family: var(--font-mono); color: var(--color-accent-dark); letter-spacing: var(--ls-widest); }
+  .error-rings { width: 220px; margin: 0 auto var(--space-4); opacity: 0.8; }
+</style>
+</head>
+<body>
+<main class="container">
+  <svg class="error-rings" viewBox="0 0 200 200" fill="none">
+    <circle cx="100" cy="100" r="90" stroke="var(--color-silver-dark)"/>
+    <circle cx="100" cy="100" r="60" stroke="var(--color-accent)" stroke-width="1.5"/>
+    <circle cx="100" cy="100" r="30" stroke="var(--color-silver-dark)"/>
+  </svg>
+  <p class="error-code caption">Error 404 · Out of tolerance</p>
+  <h1 class="h1" style="margin:1rem 0;">This page isn't on the drawing.</h1>
+  <p class="body-lg" style="max-width:44ch;margin:0 auto 2rem;color:var(--color-ink-soft);">The page you're looking for doesn't exist or has moved. Let's get you back on centre.</p>
+  <a href="index.html" class="btn btn-primary">Back to Home</a>
+</main>
+</body>
+</html>

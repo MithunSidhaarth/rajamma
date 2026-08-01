@@ -1,0 +1,15 @@
+Copyright (c) 2026 Rajamma Engineering Pvt. Ltd.
+
+All rights reserved.
+
+This source code and its associated design assets are the property of
+Rajamma Engineering Pvt. Ltd. and are provided for the exclusive use of
+building and maintaining the rajammaengineering.in website. No part of
+this codebase may be reproduced, distributed, or used to build a
+competing product without written permission from Rajamma Engineering
+Pvt. Ltd.
+
+Third-party libraries loaded via CDN (GSAP, Lenis) remain licensed under
+their respective original licenses:
+- GSAP — see https://gsap.com/community/standard-license/
+- Lenis — MIT License, https://github.com/darkroomengineering/lenis

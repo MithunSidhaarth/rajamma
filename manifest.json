@@ -1,0 +1,14 @@
+{
+  "name": "Rajamma Engineering Pvt. Ltd.",
+  "short_name": "Rajamma Engineering",
+  "description": "Heavy precision machining of customer-supplied fabricated structures up to 15 tons. Chennai, India.",
+  "start_url": "/index.html",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#F7F8FA",
+  "theme_color": "#14171B",
+  "lang": "en-IN",
+  "icons": [
+    { "src": "assets/svg/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
