@@ -1,184 +1,208 @@
 /* ==========================================================================
    RAJAMMA ENGINEERING — INTERACTIONS
-   Machine slider, Web3Forms integration, file upload, misc UI.
+   Machine slider, Web3Forms, file upload, misc UI.
    ========================================================================== */
 
 (function () {
-  'use strict';
+    "use strict";
 
-  /* ---------------- Machine slider ---------------- */
-  const track = document.querySelector('.machine-track');
+    /* ==========================================================
+       MACHINE SLIDER
+    ========================================================== */
 
-  if (track) {
-    const prevBtn = document.querySelector('[data-machine-prev]');
-    const nextBtn = document.querySelector('[data-machine-next]');
+    const track = document.querySelector(".machine-track");
 
-    const scrollAmount = () =>
-      (track.querySelector('.machine-card')?.offsetWidth || 380) + 24;
+    if (track) {
 
-    nextBtn?.addEventListener('click', () => {
-      track.scrollBy({
-        left: scrollAmount(),
-        behavior: 'smooth'
-      });
-    });
+        const prevBtn = document.querySelector("[data-machine-prev]");
+        const nextBtn = document.querySelector("[data-machine-next]");
 
-    prevBtn?.addEventListener('click', () => {
-      track.scrollBy({
-        left: -scrollAmount(),
-        behavior: 'smooth'
-      });
-    });
-  }
+        const scrollAmount = () =>
+            (track.querySelector(".machine-card")?.offsetWidth || 380) + 24;
 
-  /* ---------------- Web3Forms ---------------- */
+        nextBtn?.addEventListener("click", () => {
+            track.scrollBy({
+                left: scrollAmount(),
+                behavior: "smooth"
+            });
+        });
 
-  document.querySelectorAll("[data-form]").forEach((form) => {
+        prevBtn?.addEventListener("click", () => {
+            track.scrollBy({
+                left: -scrollAmount(),
+                behavior: "smooth"
+            });
+        });
 
-    form.addEventListener("submit", async (e) => {
+    }
 
-      e.preventDefault();
+    /* ==========================================================
+       WEB3FORMS
+    ========================================================== */
 
-      const feedback = form.querySelector("[data-form-feedback]");
-      const submitBtn = form.querySelector('button[type="submit"]');
+    document.querySelectorAll("[data-form]").forEach((form) => {
 
-      /* Validation */
+        form.addEventListener("submit", async function (e) {
 
-      let valid = true;
+            e.preventDefault();
 
-      form.querySelectorAll("[required]").forEach(field => {
+            const feedback = form.querySelector("[data-form-feedback]");
+            const submitBtn = form.querySelector("button[type='submit']");
 
-        if (!field.value.trim()) {
+            if (feedback) {
+                feedback.textContent = "";
+            }
 
-          valid = false;
-          field.style.borderColor = "var(--color-error)";
+            /* ---------------- Validation ---------------- */
 
-        } else {
+            let valid = true;
 
-          field.style.borderColor = "var(--color-silver-soft)";
-        }
+            form.querySelectorAll("[required]").forEach(field => {
 
-      });
+                if (!field.value.trim()) {
 
-      if (!valid) {
+                    valid = false;
+                    field.style.borderColor = "var(--color-error)";
 
-        feedback.textContent = "Please complete all required fields.";
-        feedback.style.color = "var(--color-error)";
+                } else {
 
-        return;
+                    field.style.borderColor = "";
 
-      }
+                }
 
-      /* Loading */
+            });
 
-      const originalText = submitBtn.innerHTML;
+            if (!valid) {
 
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = "Sending...";
+                if (feedback) {
 
-      feedback.textContent = "";
-      feedback.style.color = "";
+                    feedback.style.color = "var(--color-error)";
+                    feedback.textContent =
+                        "Please complete all required fields.";
 
-      try {
+                }
 
-        const formData = new FormData(form);
+                return;
 
-        formData.append(
-          "access_key",
-          "3539e747-ec8e-4523-9e3b-2f24075be972"
-        );
+            }
 
-        const response = await fetch(
-          "https://api.web3forms.com/submit",
-          {
-            method: "POST",
-            body: formData
-          }
-        );
+            /* ---------------- Button ---------------- */
 
-        const result = await response.json();
+            const originalText = submitBtn.innerHTML;
 
-        if (result.success) {
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = "Sending...";
 
-          feedback.textContent =
-            "✓ Thank you! Your enquiry has been received. Our engineering team will contact you shortly.";
+            try {
 
-          feedback.style.color = "var(--color-success)";
+                const formData = new FormData(form);
 
-          form.reset();
+                const response = await fetch(
+                    "https://api.web3forms.com/submit",
+                    {
+                        method: "POST",
+                        body: formData,
+                        headers: {
+                            Accept: "application/json"
+                        }
+                    }
+                );
 
-          /* Reset file label */
+                const result = await response.json();
 
-          form.querySelectorAll("[data-file-label]").forEach(label => {
+                console.log(result);
 
-            label.textContent =
-              "Drop drawing files here or click to browse (PDF, DWG, STEP)";
+                if (response.ok && result.success) {
 
-          });
+                    if (feedback) {
 
-        } else {
+                        feedback.style.color = "var(--color-success)";
+                        feedback.textContent =
+                            "✓ Thank you! Your enquiry has been received successfully. We will contact you shortly.";
 
-          throw new Error(result.message);
+                    }
 
-        }
+                    form.reset();
 
-      } catch (err) {
+                    form.querySelectorAll("[data-file-label]").forEach(label => {
 
-        console.error(err);
+                        label.textContent =
+                            "Drop drawing files here or click to browse (PDF, DWG, STEP)";
 
-        feedback.textContent =
-          "Something went wrong. Please try again or contact us directly.";
+                    });
 
-        feedback.style.color = "var(--color-error)";
+                } else {
 
-      }
+                    throw new Error(
+                        result.message || "Unable to submit the form."
+                    );
 
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = originalText;
+                }
 
-    });
+            } catch (error) {
 
-  });
+                console.error(error);
 
-  /* ---------------- File Upload ---------------- */
+                if (feedback) {
 
-  document
-    .querySelectorAll('.form-file input[type="file"]')
-    .forEach((input) => {
+                    feedback.style.color = "var(--color-error)";
+                    feedback.textContent =
+                        error.message ||
+                        "Something went wrong. Please try again.";
 
-      const label = input
-        .closest(".form-file")
-        .querySelector("[data-file-label]");
+                }
 
-      input.addEventListener("change", () => {
+            }
 
-        if (!label) return;
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalText;
 
-        if (input.files.length === 0) {
-
-          label.textContent =
-            "Drop drawing files here or click to browse (PDF, DWG, STEP)";
-
-          return;
-
-        }
-
-        label.textContent =
-          `${input.files.length} file(s): ` +
-          Array.from(input.files)
-            .map(file => file.name)
-            .join(", ");
-
-      });
+        });
 
     });
 
-  /* ---------------- Footer Year ---------------- */
+    /* ==========================================================
+       FILE LABEL
+    ========================================================== */
 
-  document.querySelectorAll("[data-year]").forEach(el => {
+    document
+        .querySelectorAll(".form-file input[type='file']")
+        .forEach((input) => {
 
-    el.textContent = new Date().getFullYear();
+            const label = input
+                .closest(".form-file")
+                .querySelector("[data-file-label]");
 
-  });
+            input.addEventListener("change", () => {
+
+                if (!label) return;
+
+                if (input.files.length === 0) {
+
+                    label.textContent =
+                        "Drop drawing files here or click to browse (PDF, DWG, STEP)";
+
+                    return;
+
+                }
+
+                label.textContent =
+                    input.files.length +
+                    " file(s): " +
+                    Array.from(input.files)
+                        .map(file => file.name)
+                        .join(", ");
+
+            });
+
+        });
+
+    /* ==========================================================
+       FOOTER YEAR
+    ========================================================== */
+
+    document.querySelectorAll("[data-year]").forEach((el) => {
+        el.textContent = new Date().getFullYear();
+    });
 
 })();
