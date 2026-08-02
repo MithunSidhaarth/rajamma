@@ -95,7 +95,11 @@
 
       <div data-reveal="up" class="card" style="padding:var(--space-5);">
         <h2 class="h3" style="margin-bottom:1.5rem;">Send a message</h2>
-        <form data-form>
+        <form data-form action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data">
+<input type="hidden" name="access_key" value="3539e747-ec8e-4523-9e3b-2f24075be972">
+<input type="hidden" name="subject" value="New Contact Enquiry - Rajamma Engineering">
+<input type="hidden" name="from_name" value="Rajamma Engineering Website">
+<input type="checkbox" name="botcheck" style="display:none">
           <div class="form-row">
             <div class="form-group"><label for="c-name">Full name</label><input id="c-name" name="name" type="text" required></div>
             <div class="form-group"><label for="c-company">Company</label><input id="c-company" name="company" type="text"></div>
