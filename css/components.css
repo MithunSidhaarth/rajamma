@@ -130,59 +130,116 @@
 .whatsapp-float svg { width: 28px; height: 28px; fill: #fff; }
 
 /* ---- Footer ---- */
-.site-footer {
-  background: var(--color-surface-dark);
-  color: var(--color-silver);
-  padding-top: var(--space-7);
-}
-.footer-top {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
-  gap: var(--space-5);
-  padding-bottom: var(--space-6);
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-}
-.footer-brand .nav-logo-text { color: #fff; }
-.footer-brand .nav-logo-text span { color: var(--color-silver-dark); }
-.footer-brand p { margin-top: var(--space-3); color: var(--color-silver-dark); max-width: 32ch; }
-.footer-col h4 { color: #fff; font-size: var(--fs-caption); font-family: var(--font-mono); letter-spacing: var(--ls-wide); text-transform: uppercase; margin-bottom: var(--space-3); }
-.footer-col a, .footer-col p { display: block; color: var(--color-silver); font-size: var(--fs-small); margin-bottom: 0.8rem; transition: color var(--dur-fast); }
-.footer-col a:hover { color: var(--color-accent); }
-.footer-bottom {
-  display: flex; align-items: center; justify-content: space-between;
-  padding-block: var(--space-3);
-  font-size: var(--fs-caption);
-  color: var(--color-silver-dark);
-  flex-wrap: wrap; gap: var(--space-2);
-}
-.footer-bottom .msme-badge {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  font-family: var(--font-mono); color: var(--color-silver);
-}
-.footer-legal { display: flex; gap: var(--space-3); }
-/* ---- Footer Credit ---- */
 
-.footer-credit{
+.site-footer{
+    background:var(--color-surface-dark);
+    color:var(--color-silver);
+    padding-top:var(--space-7);
+}
+
+.footer-top{
+    display:grid;
+    grid-template-columns:1.4fr 1fr 1fr 1.2fr;
+    gap:var(--space-5);
+    padding-bottom:var(--space-6);
+    border-bottom:1px solid rgba(255,255,255,.1);
+}
+
+.footer-brand .nav-logo-text{
+    color:#fff;
+}
+
+.footer-brand .nav-logo-text span{
+    color:var(--color-silver-dark);
+}
+
+.footer-brand p{
+    margin-top:var(--space-3);
+    color:var(--color-silver-dark);
+    max-width:32ch;
+}
+
+.footer-col h4{
+    color:#fff;
+    font-size:var(--fs-caption);
+    font-family:var(--font-mono);
+    letter-spacing:var(--ls-wide);
+    text-transform:uppercase;
+    margin-bottom:var(--space-3);
+}
+
+.footer-col a,
+.footer-col p{
+    display:block;
+    color:var(--color-silver);
+    font-size:var(--fs-small);
+    margin-bottom:.8rem;
+    transition:color var(--dur-fast);
+}
+
+.footer-col a:hover{
+    color:var(--color-accent);
+}
+
+.footer-bottom{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:1rem;
+    padding:1.5rem 0;
+    font-size:var(--fs-caption);
+    color:var(--color-silver-dark);
+    text-align:center;
+}
+
+.footer-info{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:2rem;
+}
+
+.footer-bottom .msme-badge{
     display:inline-flex;
     align-items:center;
-    gap:.35rem;
+    gap:.5rem;
+    font-family:var(--font-mono);
+    color:var(--color-silver);
+}
+
+.footer-legal{
+    display:inline-flex;
+    align-items:center;
+}
+
+.footer-legal a{
+    color:var(--color-silver-dark);
+    text-decoration:none;
+    transition:color var(--dur-fast);
+}
+
+.footer-legal a:hover{
+    color:var(--color-accent);
+}
+
+.footer-credit{
     color:var(--color-silver-dark);
     font-size:var(--fs-caption);
     font-family:var(--font-mono);
     letter-spacing:var(--ls-wide);
-    white-space:nowrap;
 }
 
 .footer-credit a{
     color:var(--color-silver);
     text-decoration:none;
-    font-weight:500;
-    transition:color var(--dur-fast),opacity var(--dur-fast);
+    font-weight:600;
+    transition:color var(--dur-fast);
 }
 
 .footer-credit a:hover{
     color:var(--color-accent);
-    opacity:1;
 }
 /* ---- Forms ---- */
 .form-group { margin-bottom: var(--space-3); }
