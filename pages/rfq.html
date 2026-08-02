@@ -69,7 +69,11 @@
     <div class="container detail-grid">
       <div data-reveal="up" class="card" style="padding:var(--space-5);">
         <h2 class="h3" style="margin-bottom:1.5rem;">Component &amp; drawing details</h2>
-        <form data-form>
+        <form data-form action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data">
+<input type="hidden" name="access_key" value="3539e747-ec8e-4523-9e3b-2f24075be972">
+<input type="hidden" name="subject" value="New RFQ - Rajamma Engineering">
+<input type="hidden" name="from_name" value="Rajamma Engineering Website">
+<input type="checkbox" name="botcheck" style="display:none">
           <div class="form-row">
             <div class="form-group"><label for="r-name">Full name</label><input id="r-name" name="name" type="text" required></div>
             <div class="form-group"><label for="r-company">Company</label><input id="r-company" name="company" type="text" required></div>
@@ -98,12 +102,12 @@
           </div>
           <div class="form-group"><label for="r-tolerance">Required tolerance</label><input id="r-tolerance" name="tolerance" type="text" placeholder="e.g. ±0.05mm on bore diameter"></div>
           <div class="form-group"><label for="r-timeline">Required timeline</label><input id="r-timeline" name="timeline" type="text" placeholder="e.g. 2 weeks / urgent breakdown"></div>
-          <div class="form-group"><label for="r-notes">Additional notes</label><textarea id="r-notes" name="notes" placeholder="Material, quantity, fixturing constraints, anything else we should know."></textarea></div>
+          <div class="form-group"><label for="r-notes">Additional notes</label><textarea id="r-notes" name="message" placeholder="Material, quantity, fixturing constraints, anything else we should know."></textarea></div>
 
           <div class="form-group">
             <label>Drawing upload</label>
             <label class="form-file">
-              <input type="file" name="drawing" accept=".pdf,.dwg,.step,.stp,.jpg,.png" multiple style="display:none;">
+              <input type="file" name="attachment" accept=".pdf,.dwg,.step,.stp,.jpg,.png" multiple style="display:none;">
               <span data-file-label>Drop drawing files here or click to browse (PDF, DWG, STEP)</span>
             </label>
           </div>
