@@ -160,7 +160,30 @@
   font-family: var(--font-mono); color: var(--color-silver);
 }
 .footer-legal { display: flex; gap: var(--space-3); }
+/* ---- Footer Credit ---- */
 
+.footer-credit{
+    display:inline-flex;
+    align-items:center;
+    gap:.35rem;
+    color:var(--color-silver-dark);
+    font-size:var(--fs-caption);
+    font-family:var(--font-mono);
+    letter-spacing:var(--ls-wide);
+    white-space:nowrap;
+}
+
+.footer-credit a{
+    color:var(--color-silver);
+    text-decoration:none;
+    font-weight:500;
+    transition:color var(--dur-fast),opacity var(--dur-fast);
+}
+
+.footer-credit a:hover{
+    color:var(--color-accent);
+    opacity:1;
+}
 /* ---- Forms ---- */
 .form-group { margin-bottom: var(--space-3); }
 .form-group label {
